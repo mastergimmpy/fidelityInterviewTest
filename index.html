@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html data-ng-app="fidelityTest">
+   <head>
+      <title>ACME Investments</title>
+      <script src="/node_modules/angular/angular.js"></script>
+      <script src="js/app.js"></script>
+   </head>
+   <body>
+      <div ng-controller="formController">
+         <div class="headerImage">
+            <img src="images/ACMELogo.svg">
+         </div>
+         <form name="standingPaymentsForm" id="standingPaymentsForm">
+            <div class="mainInstructions">
+               <h1>Standing Payment Instructions</h1>
+               <p><strong>Use this form to establish or change standng Check Disbursment, Bank Wire, Electronic Funds Transfer ("EFT"), and/or Journal instructions on your brokerage account, including eligible retirement and nonretirement accounts ("Fidelity Brokerage Accounts"). Asset Movement Authorization (granted via the new account application or a separate form) may be required for your Authorization agent/Advisor to use these standing instructions on your behalf.</strong> Complete on the sections applicable to your transaction.</p>
+               <p><strong>Authorized agent/Advisor</strong></p>
+               <input class="firmName textInputFields" type="text" data-ng-model="client.firmName" placeholder="Firm Name" /> 
+               <input class="firmGNumber inputNumberFields" type="number" data-ng-model="client.firmGNumber" placeholder="G Number" /> 
+            </div>
+            <div class="accountOwners">
+               <h2 class="sectionDivider">1. Account Owner(s)</h2>
+               <p class="leftInstructions">Provide all information requested.</p>
+               <div>
+                  <input class="firstName textInputFields" type="text" data-ng-model="client.firstName" placeholder="First Name" />
+                  <input class="middleInitial textInputFields" type="text" data-ng-model="client.middleInitial" placeholder="M. I." />
+                  <input class="lastName textInputFields" type="text" data-ng-model="client.lastName" placeholder="Last Name" /> 
+                  <br />
+                  <input class="additionalOwners textInputFields" type="text" data-ng-model="client.additionalOwners" placeholder="Additional Owner, Company or Trust Name if applicable" />
+               </div>
+               <p class="leftInstructions">Phone number will be used to contact you if there is a question about this request.</p>
+               <div>
+                  <input class="clientPhone inputNumberFields" type="number" data-ng-model="client.phoneNumber" placeholder="Daytime Phone" /> 
+                  <input class="clientPhoneExtension inputNumberFields" type="number" data-ng-model="client.phoneNumberExt" placeholder="Extension" />
+               </div>
+               <p class="leftInstructions">List the accounts you want the Check, EFT, or Bank Wire standing instructions applied to.</p>
+               <div>
+                  <input class="clientAccount inputNumberFields" type="number" data-ng-model="client.accountNumber" placeholder="Account Number" /> 
+                  <input class="clientAccount inputNumberFields" type="number" data-ng-model="client.accountNumber2" placeholder="Account Number" /> 
+                  <input class="clientAccount inputNumberFields" type="number" data-ng-model="client.accountNumber3" placeholder="Account Number" />
+               </div>
+            </div>
+            <div class="bankStandingInstructions">
+               <h2 class="sectionDivider">2. Bank Standing Instructions</h2>
+               <p><strong>Bank Standing Instructions</strong> allow you to move money between your brokerage account and a bank account via Bank Wire (processed via the Federal Reserve System), or EFT (processed via the Automated Clearing House "ACH"). <strong>Bank Wire:</strong> Once Bank Wire standing instructions are established, Bank Wire requests are typically processed on the same business day. Your Broker/Dealer and/or your bank may charge a fee for a Bank Wire. Transactions may be routed through a different intermediary bank. <strong>EFT:</strong> It may take 7-10 business days to establish EFT standing instructions and 2-3 business days after the date a request is processed (disbursement or receipt) for funds to reach the bank or brokerage account. EFT receipts are available for 1st Party EFT only.</p>
+               <p class="leftInstructions">Check one.</p>
+               <div>
+                  <input class="newInstructionsCheckBox" type="checkbox" data-ng-model="client.bankStandingInstructionsNewInstructions" /> <span>Establish new instructions</span>
+                  <br />
+                  <input class="changeInstructionsCheckBox" type="checkbox" data-ng-model="client.bankStandingInstructionsChangeInstructions" /> <span>Change existing instructions</span> 
+               </div>
+               <div>
+                  <p class="leftInstructions"><strong>Authorized agent/Advisor:</strong> If you have multiple instructions established and are changing an existing instruction, include the line number.</p>
+                  <br />
+                  <input class="instructionsLineNumber inputNumberFields" type="number" data-ng-model="client.bankStandingInstructionsLineNumber" placeholder="Line Number" />
+               </div>
+               <div>
+                  <p class="leftInstructions">Check one or both</p>
+                  <div>
+                     <input class="bankWireCheckBox" type="checkbox" data-ng-model="client.bankStandingInstructionsBankWireOption" /> <span>Bank Wire</span>
+                     <br />
+                     <input class="changeInstructionsCheckBox" type="checkbox" data-ng-model="client.bankStandingInstructionsEFTOption" /> <span>EFT</span> 
+                  </div>
+               </div>
+               <div>
+                  <p class="leftInstructions">Check one.</p>
+                  <div>
+                     <input class="firstParty" type="checkbox" data-ng-model="client.bankStandingInstructionsFirstPartyAccount" /> <span>1st Party  The name(s) on the bank account and the brokerage account is (are) the same.</span>
+                     <br />
+                     <input class="thirdparty" type="checkbox" data-ng-model="client.bankStandingInstructionsThirdPartyAccount" /> <span>3rd Party  The name(s) on both accounts is NOT the same.</span>
+                  </div>
+               </div>
+               <div>
+                  <p class="leftInstructions">Check one.</p>
+                  <div>
+                     <input class="clientChecking" type="checkbox" data-ng-model="client.bankStandingInstructionsClientChecking" /> <span>Checking</span>
+                     <br />
+                     <input class="clientSavings" type="checkbox" data-ng-model="client.bankStandingInstructionsClientSavings" /> <span>Savings</span> 
+                  </div>
+               </div>
+               <div>
+                  <p class="leftInstructions">Obtain the correct routing number from the bank. *Different routing numbers may be used for Bank Wire and EFT transactions</p>
+                  <div>
+                     <input class="abaForWires inputNumberFields" type="number" data-ng-model="client.bankStandingInstructionsABAForWires" placeholder="Bank Routing Number (ABA for Wires)" />
+                     <br />
+                     <input class="abaForEFT inputNumberFields" type="number" data-ng-model="client.bankStandingInstructionsABAForEFT" placeholder="Bank Routing Number (ABA for EFTs)" />
+                     <br />
+                     <input class="bankName textInputFields" type="text" data-ng-model="client.bankStandingInstructionsBankName" placeholder="Bank Name" />
+                  </div>
+               </div>
+               <div>
+                  <p class="leftInstructions">Use for wiring through an intermediary bank</p>
+                  <div>
+                     <input class="inputNumberFields" type="number" data-ng-model="client.bankStandingInstructionsCreditAccountNumberForWires" placeholder="Further Credit Account Number for Wires Only" />
+                     <input class="textInputFields" type="text" data-ng-model="client.bankStandingInstructionsCreditNameForWires" placeholder="Further Credit Name for Wires Only" />
+                     <br />
+                     <input class="inputNumberFields" type="number" data-ng-model="client.bankStandingInstructionsBankAccountDestinationNumber" placeholder="Bank Account Number final destination" />
+                     <input class="textInputFields" type="text" data-ng-model="client.bankStandingInstructionsBankAccountOwnerName" placeholder="Owner(s) Name(s) Exactly as on Bank Account" />
+                  </div>
+               </div>
+               <div>
+                  <p class="leftInstructions">Use to provide an additional message to receiving bank</p>
+                  <div>
+                     <input class="textInputFields bankWireMessage" type="text" data-ng-model="client.bankStandingInstructionsBankWireMessage" placeholder="Details for Wires Only" />
+                  </div>
+               </div>
+               <div>
+                  <p class="leftInstructions">REQUIRED if the bank account is OUTSIDE the U.S.</p>
+                  <div>
+                     <input class="inputNumberFields" type="number" data-ng-model="client.bankStandingInstructionsSwiftCodeForWires" placeholder="SWIFT Code for Wires Only" />
+                     <input class="textInputFields" type="text" data-ng-model="client.bankStandingInstructionsDestinationCountry" placeholder="Destination Country for Wires Only" />
+                     <br />
+                     <span>It is your responsibility to ensure that the bank account outside the U.S. can accept U.S. dollars.</span>
+                  </div>
+               </div>
+               <div class="checkDisbursementStandingInstructions">
+                  <h2 class="sectionDivider">3. Check Disbursement Standing Instructions</h2>
+                  <p>Check Disbursement Standing Instructions allow you to request that a check be paid and mailed to the name(s) and address on record or to an alternate payee and/or alternate address listed below.</p>
+                  <p class="leftInstructions">Check one</p>
+                  <div>
+                     <input class="newInstructionsCheckBox" type="checkbox" data-ng-model="client.checkDisbursementStandingInstructionsNewInstructions" /> <span>Establish new instructions</span>
+                     <br />
+                     <input class="changeInstructionsCheckBox" type="checkbox" data-ng-model="client.checkDisbursementStandingInstructionsChangeInstructions" /> <span>Change existing instructions</span>
+                  </div>
+                  <div>
+                  	<p class="leftInstructions"><strong>Authorized agent/Advisor:</strong> If you have multiple instructions established and are changing an existing instruction, include the line number.</p>
+                  	<br />
+                  	<input class="instructionsLineNumber inputNumberFields" type="number" data-ng-model="client.checkDisbursementStandingInstructionsLineNumber" placeholder="Line Number" />
+                  </div>
+                  <div>
+                  	<p class="leftInstructions">Check one.</p>
+                  	<div>
+                    	<input class="firstParty" type="checkbox" data-ng-model="client.checkDisbursementStandingInstructionsFirstPartyAccount" /> <span>1st Party  Paid and mailed to name(s) and address on record. Use only if additional memo and check stub information is required.</span>
+                    	<br />
+                    	<input class="thirdParty" type="checkbox" data-ng-model="client.checkDisbursementStandingInstructionsThirdPartyAccount" /> <span>3rd Party  Paid and/or mailed to an alternate name(s) and/or address.</span>
+                  </div>
+                  <div>
+                  	<p class="leftInsructions">Avoid any account number or SSN that compromises a customer's identity. If needed, use the Memo and Check Stub Information fields</p>
+                  	<div>
+                  		<input class="textInputFields" type="text" data-ng-model="client.checkDisbursementStandingInstructionsPayee" placeholder="Payee" />
+                  		<br />
+                  		<input class="textInputFields" type="text" data-ng-model="client.checkDisbursementStandingInstructionsAttentionNote" placeholder="Attention maximum 32 characters total including &quot;Attn:&quot;" maxlength="32" /> <span>OR</span> <input class="textInputFields" type="text" data-ng-model="client.checkDisbursementStandingInstructionsCareOfNote" placeholder="Care of maximum 32 characters total including &quot;C/O:&quot;" maxlength="32" />
+                  		<br />
+                  		<input class="textInputFields" type="text" data-ng-model="client.checkDisbursementStandingInstructionsAddress" placeholder="Address" />
+                  		<br />
+                  		<input class="textInputFields" type="text" data-ng-model="client.checkDisbursementStandingInstructionsCity" placeholder="City" />
+                  		<input class="textInputFields" type="text" data-ng-model="client.checkDisbursementStandingInstructionsState" placeholder="State/Province" />
+                  		<input class="textInputFields" type="text" data-ng-model="client.checkDisbursementStandingInstructionsZipcode" placeholder="Zip/Postal Code" />
+                  	</div>
+                  	<p class="leftInstructions">Information provided in the Memo field will print on the check but will not appear visible in the window of the envelope</p>
+                  	<div>
+                  		<input class="textInputFields" type="text" data-ng-model="client.checkDisbursementStandingInstructionsMemoNote" placeholder="Memo maximum 30 characters" maxlength="30" />
+                  		<br />
+                  		<textarea class="textAreaField" rows="4" cols="50" form="standingPaymentsForm" data-ng-model="client.checkDisbursementStandingInstructionsCheckStubInformation" ngMaxlength="100" placeholder="Check Stub Information maximum 100 characters"></textarea>
+                  		<br />
+                  		<p class="leftInstructions">Optional</p>
+                  		<br />
+                  		<input class="optionalAddressOption" type="checkbox" data-ng-model="client.checkDisbursementStandingInstructionsOptionalAddressOption" /> <span class="short">Do not print above on the check to the 3rd party. To suppress the printing of the address on the check, you must provide the Payee's state of residence (escheatment state) and select overnight mail when initiating check request.</span> <input class="optionalAddressState" type="text" data-ng-model="client.checkDisbursementStandingInstructionsOptionalAddressState" placeholder="State" maxlength="2" />
+                  	</div>
+                  </div>
+               </div>
+            </div>
+            <div class="signaturesAndDates">
+            	<h2 class="sectionDivider">4. Signatures and Dates</h2>
+            </div>
+
+            <input type="submit" ng-click="save(client)" value="Submit" />
+         </form>
+      </div>
+   </body>
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+</html>
