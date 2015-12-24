@@ -162,6 +162,14 @@
             </div>
             <div class="signaturesAndDates">
             	<h2 class="sectionDivider">4. Signatures and Dates</h2>
+            	<p class="leftInstructions">I Agree </p>
+            	<input type="checkbox" data-ng-model="client.agree" id="clientAgree" required="" />
+            	<input ng-show="client.agree" type="text" data-ng-model="client.agreeSignature" required="" />
+            </div>
+            <div ng-show="form.$submitted || form.clientAgree.$touched">
+            	<div ng-show="!client.agree || !client.agreeSignature">
+            		<p>Please agree and sign</p>
+            	</div>
             </div>
 
             <input type="submit" ng-click="save(client)" value="Submit" />
